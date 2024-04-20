@@ -13,31 +13,18 @@ class MainPage extends StatefulWidget {
 
 class _State extends State<MainPage> {
   final places = PlaceRegistry();
-  var placeSelected = false;
 
   void onPlaceTapped(Place place) async {
-    setState(() {
-      placeSelected = true;
-    });
     await PlaceCard.showAsModal(context, place);
-    setState(() {
-      placeSelected = false;
-    });
   }
 
   Future<void> showAbout() async {
-    setState(() {
-      placeSelected = true;
-    });
     await showDialog(context: context, builder: (dialogContext) => const AboutDialog(
       applicationName: "Baby City - Nice",
       children: [
-        Text("Made by Amos & Amelia Joshua")
+        Text("Made in Nice with ❤️\nFor Lily")
       ],
     ));
-    setState(() {
-      placeSelected = false;
-    });
   }
 
   @override
@@ -53,15 +40,9 @@ class _State extends State<MainPage> {
           )
         ],
       ),
-      body:
-      Visibility(
-        visible: !placeSelected,
-        maintainAnimation: true,
-        maintainState: true,
-        child: PlaceMap(
-          places: places.places,
-          onTapPlace: onPlaceTapped
-        )
+      body: PlaceMap(
+        places: places.places,
+        onTapPlace: onPlaceTapped
       )
     );
   }
