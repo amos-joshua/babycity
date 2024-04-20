@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
-//import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 
 enum PlaceType {
   cafe, restaurant
@@ -57,7 +56,7 @@ class PlaceRegistry {
       amenities: ["Changing table"],
       website: "https://www.facebook.com/sudnice.fr/"
     )
-  ];
+  ]..sort((a, b) => a.name.compareTo(b.name));
 
   Place? placeFor({required LatLng location}) {
     return places.cast<Place?>().firstWhere((element) => element?.location == location, orElse: () => null);

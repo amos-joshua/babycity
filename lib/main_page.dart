@@ -1,3 +1,4 @@
+import "package:babycity/place_list_view.dart";
 import "package:flutter/material.dart";
 import "place_map.dart";
 import "places.dart";
@@ -27,6 +28,13 @@ class _State extends State<MainPage> {
     ));
   }
 
+  Future<void> showList() async {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => PlaceListView(places: places)
+      )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,11 +43,16 @@ class _State extends State<MainPage> {
         title: Text(widget.title),
         actions: [
           IconButton(
+              onPressed: showList,
+              icon: const Icon(Icons.list)
+          ),
+          IconButton(
               onPressed: showAbout,
               icon: const Icon(Icons.info)
           )
         ],
       ),
+      //drawer: const AppDrawer(),
       body: PlaceMap(
         places: places.places,
         onTapPlace: onPlaceTapped

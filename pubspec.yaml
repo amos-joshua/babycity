@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  #flutter_osm_plugin: ^1.0.2
   flutter_map: ^6.1.0
   latlong2: ^0.9.1
   flutter_map_cancellable_tile_provider: ^2.0.0
